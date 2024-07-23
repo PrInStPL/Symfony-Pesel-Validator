@@ -1,0 +1,32 @@
+name: PHP Composer tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: PHP setup
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        extensions: none, calendar, ctype, dom, json, libxml, mbstring, phar, simplexml, tokenizer, xml, xmlwriter
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Install dependencies
+      run: composer install --prefer-dist -v
+
+    - name: Run tests
+      run: composer run-script tests

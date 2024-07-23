@@ -1,0 +1,59 @@
+{
+    "name": "prinst/symfony-pesel-validator",
+    "description": "Polish PESEL number validator for Symfony",
+    "keywords": ["pesel", "validator", "symfony"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Łukasz Konarski",
+            "email": "prinst.pl@gmail.com",
+            "role": "developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "prinst/validator-polish-pesel": "^1.0.0",
+        "symfony/validator": "^6.4|^7"
+    },
+    "require-dev": {
+        "phpstan/extension-installer": "@stable",
+        "phpstan/phpdoc-parser": "@stable",
+        "phpstan/phpstan": "@stable",
+        "phpstan/phpstan-deprecation-rules": "@stable",
+        "phpstan/phpstan-strict-rules": "@stable",
+        "phpstan/phpstan-symfony": "@stable",
+        "phpunit/phpunit": "^11-@stable",
+        "squizlabs/php_codesniffer": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "PrInSt\\Symfony\\PeselValidator\\": "src/"
+        },
+        "exclude-from-classmap": [
+            "tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PrInSt\\Symfony\\PeselValidator\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "tests": [
+            "@test-phpunit",
+            "@test-phpstan",
+            "@test-phpcs"
+        ],
+        "test-phpunit": "vendor/bin/phpunit --configuration phpunit.xml --do-not-cache-result ./tests",
+        "test-phpstan": "vendor/bin/phpstan analyse --configuration=phpstan.neon --no-interaction",
+        "test-phpcs": "vendor/bin/phpcs --standard=PSR12 --exclude=Squiz.Functions.FunctionDeclarationArgumentSpacing --no-cache -s --colors -p --tab-width=4 ./src"
+    }
+}

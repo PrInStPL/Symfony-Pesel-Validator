@@ -1,0 +1,23 @@
+parameters:
+	level: 9
+
+	checkImplicitMixed: true
+	checkBenevolentUnionTypes: true
+	checkMissingOverrideMethodAttribute: true
+	checkUninitializedProperties: true
+	reportPossiblyNonexistentGeneralArrayOffset: true
+	reportPossiblyNonexistentConstantArrayOffset: true
+	reportWrongPhpDocTypeInVarTag: true
+	reportAnyTypeWideningInVarTag: true
+
+	strictRules:
+		allRules: true
+
+	paths:
+		- src
+
+	excludePaths:
+		- .debug
+		- .docker
+		- tests
+		- vendor

@@ -1,0 +1,7 @@
+/.debug
+/.docker
+.idea
+vendor/
+.phpunit.result.cache
+composer.lock
+qodana.yaml
